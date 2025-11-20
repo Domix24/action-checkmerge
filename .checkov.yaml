@@ -1,0 +1,8 @@
+# .github/.checkov.yaml - dummy Checkov config tailored for use with Super-Linter
+# Establish a baseline so we don't have to fix these issues at the same time
+
+# The tests directory contains files that we need for test cases that are
+# expected to fail. Checkov would catch those issues, so we exclude the tests
+# directory.
+skip-path:
+  - node_modules
