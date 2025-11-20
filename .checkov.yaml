@@ -1,58 +1,8 @@
 # .github/.checkov.yaml - dummy Checkov config tailored for use with Super-Linter
-version: 1
+# Establish a baseline so we don't have to fix these issues at the same time
 
-# Frameworks to scan (common IaC formats)
-frameworks:
-  - terraform
-  - cloudformation
-  - kubernetes
-  - arm
-  - bicep
-
-# Checks to explicitly skip (example check IDs)
-skip_checks:
-  - CKV_AWS_20
-  - CKV_K8S_21
-
-# Entire frameworks to skip scanning
-skip_frameworks:
-  - serverless
-
-# Custom external checks (relative to repo)
-external_checks_dir:
-  - .checkov/custom_checks
-
-# Paths to exclude from scanning (useful for vendor, build, tests)
-exclude_paths:
-  - .venv/
-  - node_modules/
-  - __tests__/
-  - fixtures/
-
-# Treat failures as soft to avoid blocking Super-Linter pipeline; adjust as needed
-soft_fail: true
-
-# Enable secret scanning in addition to IaC checks
-enable_secret_scan: true
-
-# Control downloading of external modules (Terraform modules, etc.)
-download_external_modules: true
-
-# Output/reporting configuration
-output:
-  # Primary output format used by CI integration
-  format: json
-  # Write machine-readable report for Super-Linter consumption
-  file: checkov-report.json
-
-# Policy/OPA integration (optional placeholder)
-policies:
-  type: opa
-  path: policies/
-
-# Baseline file to ignore preexisting findings (example path)
-baseline_file: .checkov/baseline.json
-
-# Additional runtime options (tunable)
-quiet: false
-skip_file_download: false
+# The tests directory contains files that we need for test cases that are
+# expected to fail. Checkov would catch those issues, so we exclude the tests
+# directory.
+skip-path:
+  - node_modules
