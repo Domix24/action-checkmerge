@@ -30,13 +30,13 @@ jobs:
     steps:
       - name: Checkout
         id: checkout
-        uses: actions/checkout@f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Initialize CodeQL
         id: initialize
-        uses: github/codeql-action/init@d97b3428e8eebbb1810cf454d6397886d136b4ba
+        uses: github/codeql-action/init@db488ddef3bf6cb639b32c2e9a7c0a7ea8271d28 # v4.37.8
         with:
           config-file: .github/codeql/codeql-config.yml
           languages: ${{ matrix.language }}
@@ -44,8 +44,8 @@ jobs:
 
       - name: Autobuild
         id: autobuild
-        uses: github/codeql-action/autobuild@d97b3428e8eebbb1810cf454d6397886d136b4ba
+        uses: github/codeql-action/autobuild@db488ddef3bf6cb639b32c2e9a7c0a7ea8271d28 # v4.37.8
 
       - name: Perform CodeQL Analysis
         id: analyze
-        uses: github/codeql-action/analyze@d97b3428e8eebbb1810cf454d6397886d136b4ba
+        uses: github/codeql-action/analyze@db488ddef3bf6cb639b32c2e9a7c0a7ea8271d28 # v4.37.8
